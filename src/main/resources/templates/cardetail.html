@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Detail</title>
+</head>
+<body>
+
+<a href="/">Show list of Cars</a>
+
+<div class="container">
+    <!--<input th:field="*{id}" type="hidden">-->
+    <h5 th:text="${catergory.nameCategory}"></h5>
+    <!--<input th:field="*{petName}" type="text">-->
+
+
+    <h3 th:text="${#lists.size(catergory.cars)>0}?'List of cars':'No cars'"></h3>
+    <div th:each="eachCar:${catergory.cars}">
+        <p th:text="${eachCar.manufacture}"
+           th:value="${eachCar.id}"></p>
+        <p th:text="${eachCar.model}"
+           th:value="${eachCar.id}"></p>
+        <p th:text="${eachCar.year}"
+           th:value="${eachCar.id}"></p>
+    </div>
+</div>
+
+
+</body>
+</html>

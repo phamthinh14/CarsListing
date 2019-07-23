@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Category Form</title>
+</head>
+<body>
+<form action="#" th:action="@{/processcater}" th:object="${cartergory}" method="post">
+    <div class="container">
+        <!--private String manufacture;-->
+        <!--private String model;-->
+        <!--private String year;-->
+        <!--private Catergory catergory;-->
+        <input th:field="*{id}" type="hidden">
+        Create a new category: <input th:field="*{nameCategory}" type="text"> <br>
+
+
+
+
+    </div>
+
+    <button type="submit">Save Your New Category</button>
+</form>
+</body>
+</html>

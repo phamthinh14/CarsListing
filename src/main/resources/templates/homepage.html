@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pets and owners</title>
+</head>
+<body>
+<div class="container">
+    <h1>Cars and Their Categories</h1>
+    <a href="/addcar">Add a Car</a>
+    <br>
+    <a href="/addcater">Add a Category</a>
+
+    <div th:each="eachCar:${catergorys}">
+        <h2 th:text="${eachCar.nameCategory}"></h2>
+
+        <h3 th:text="${#lists.size(eachCar.cars)>0}?'Cars List':'No Cars'"></h3>
+        <div th:each="car:${eachCar.cars}">
+            <p th:text="${car.manufacture}"
+               th:value="${car.id}"></p>
+            <p th:text="${car.model}"
+               th:value="${car.id}"></p>
+            <p th:text="${car.year}"
+               th:value="${car.id}"></p>
+            <a th:href="@{/update/{id} (id=${car.id})}">Update</a>
+        </div>
+        <!--<a th:href="@{/update/{id} (id=${eachCar.id})}">Update</a>-->
+        <a th:href="@{/detail/{id} (id=${eachCar.id})}">Details</a>
+        <a th:href="@{/delete/{id} (id=${eachCar.id})}">Delete</a>
+    </div>
+</div>
+</body>
+</html>
