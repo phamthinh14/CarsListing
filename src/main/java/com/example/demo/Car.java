@@ -3,6 +3,8 @@ package com.example.demo;
 import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -11,8 +13,16 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotBlank
+    @Size(min = 2, message = "Manufacture information should have more detail")
     private String manufacture;
+
+    @NotBlank
+    @Size(min = 2, message = "Model information should have more detail")
     private String model;
+
+    @NotBlank
+    @Size(min = 2, message = "Year information should have more detail")
     private String year;
 
     @ManyToOne(fetch = FetchType.EAGER)

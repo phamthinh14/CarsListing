@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
+    <th:block th:replace="/homepage :: importBS">...</th:block>
     <title>Add Car Form</title>
 </head>
+
 <body>
-<form action="#" th:action="@{/processcar}" th:object="${car}" method="post">
+
+<!--<th:block th:replace="/homepage :: importNavBar">...</th:block>-->
+<a href="/">Show list of Cars</a>
+<h1 class="introTitle" style="text-align: center">Add New Car</h1>
+<hr>
+<br>
+
+<form class="jumbotron" action="#" th:action="@{/processcar}" th:object="${car}" method="post">
     <div class="container">
         <!--private String manufacture;-->
         <!--private String model;-->
@@ -13,19 +22,29 @@
         <!--private Catergory catergory;-->
         <input th:field="*{id}" type="hidden">
         Manufacture: <input th:field="*{manufacture}" type="text"> <br>
+        <span th:if="${#fields.hasErrors('manufacture')}"
+              th:errors="*{manufacture}"></span> <br/>
+
         Model: <input th:field="*{model}" type="text"> <br>
+        <span th:if="${#fields.hasErrors('model')}"
+              th:errors="*{model}"></span> <br/>
+
         Year: <input th:field="*{year}" type="text"> <br>
+        <span th:if="${#fields.hasErrors('year')}"
+              th:errors="*{year}"></span> <br/>
 
-
+        Select a category:<br>
         <select th:field="*{catergory}" multiple>
             <option th:each="eachCarter:${cartergorys}"
                     th:text="${eachCarter.nameCategory}"
                     th:value="${eachCarter.id}">
             </option>
         </select>
+        <br>
 
+        <button type="submit" style="text-align: center">Save Car</button>
     </div>
-    <button type="submit">Save Car</button>
+
 
 </form>
 </body>

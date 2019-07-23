@@ -26,7 +26,7 @@ public class HomeController {
         return "homepage";
     }
 
-    @RequestMapping("/addcater")
+    @GetMapping("/addcater")
     public String carterForm(Model model) {
 
         model.addAttribute("cartergory", new Catergory());
@@ -35,7 +35,7 @@ public class HomeController {
     }
 
     @PostMapping("/processcater")
-    public String processCaterForm(@Valid Catergory catergory, BindingResult result, Model model) {
+    public String processCaterForm(@Valid @ModelAttribute("cartergory") Catergory catergory, BindingResult result, Model model) {
         if (result.hasErrors()) {
 //            model.addAttribute("cars", carRepository.findAll());
             return "carterform";
@@ -80,7 +80,7 @@ public class HomeController {
     @PostMapping("/update/changecar/{id}")
     public String changeCarForm(@Valid Car car, BindingResult result, Model model) {
         if (result.hasErrors()) {
-//            model.addAttribute("cartergorys", catergoryRepository.findAll());
+            model.addAttribute("cartergorys", catergoryRepository.findAll());
             return "changecarinfo";
         }
         carRepository.save(car);

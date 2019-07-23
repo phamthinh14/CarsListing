@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -9,6 +11,8 @@ public class Catergory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotBlank
+    @Size(min = 1, message = "The category name should be longer")
     private String nameCategory;
 
     @OneToMany(mappedBy = "catergory", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
