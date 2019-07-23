@@ -8,7 +8,7 @@
 
 <a href="/">Show list of Cars</a>
 
-<div class="container">
+<div class="jumbotron">
     <!--<input th:field="*{id}" type="hidden">-->
     <h5 th:text="${catergory.nameCategory}"></h5>
     <!--<input th:field="*{petName}" type="text">-->
@@ -22,6 +22,8 @@
            th:value="${eachCar.id}"></p>
         <p th:text="${eachCar.year}"
            th:value="${eachCar.id}"></p>
+        <!--Delete one car does not work yet-->
+        <!--<a th:href="@{/delete/car/{id} (id=${eachCar.id})}">Delete this car</a>-->
     </div>
 </div>
 

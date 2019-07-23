@@ -79,10 +79,11 @@
     <!--<a href="/addcater">Add a Category</a>-->
 
     <div th:each="eachCar:${catergorys}">
-        <h2 th:text="${eachCar.nameCategory}"></h2>
+        <h3> Category: <span th:text="${eachCar.nameCategory}"></span>
+        </h3>
 
-        <h3 th:text="${#lists.size(eachCar.cars)>0}?'Cars List':'No Cars To Show'"></h3>
-        <div class="card-group" >
+        <h5 th:text="${#lists.size(eachCar.cars)>0}?'Cars List':'No Cars To Show'"></h5>
+        <div class="card-group">
 
             <div class="card" th:each="car:${eachCar.cars}">
                 <!--<img src="..." class="card-img-top" alt="...">-->
@@ -99,9 +100,10 @@
         </div>
 
         <div>
-            <a th:href="@{/detail/{id} (id=${eachCar.id})}">Details</a>
+            <a th:href="@{/detail/{id} (id=${eachCar.id})}">View More</a>
             <a th:href="@{/delete/{id} (id=${eachCar.id})}">Delete</a>
         </div>
+        <br>
 
         <!--<a th:href="@{/update/{id} (id=${eachCar.id})}">Update</a>-->
 

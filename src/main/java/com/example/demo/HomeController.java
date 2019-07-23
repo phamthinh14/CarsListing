@@ -93,5 +93,13 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @RequestMapping("/delete/car/{id}")
+    public String delInvidualCar(@PathVariable("id") long id) {
+        Long myId = catergoryRepository.findById(id).get().getId();
+//        catergoryRepository.findById(id).get().;
+        carRepository.deleteById(myId);
+        return "redirect:/";
+    }
+
 
 }
