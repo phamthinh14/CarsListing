@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="/homepage :: importBS">...</th:block>
+    <title>Car Detail</title>
+</head>
+<body>
+
+<a href="/">Show One Car Detail</a>
+
+<div class="jumbotron">
+
+    <h5>Hello</h5>
+
+
+
+    <!--<h3 th:text="${#lists.size(catergory.cars)>0}?'List of cars':'No cars'"></h3>-->
+    <div>
+        <p th:text="${car.manufacture}"></p>
+        <p th:text="${car.model}"
+           ></p>
+        <p th:text="${car.year}"
+           ></p>
+        <!--Delete one car does not work yet-->
+        <a th:href="@{/delete/car/{id} (id=${car.id})}">Delete this car</a>
+    </div>
+</div>
+
+
+</body>
+</html>

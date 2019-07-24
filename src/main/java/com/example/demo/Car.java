@@ -1,11 +1,8 @@
 package com.example.demo;
 
-import com.sun.javafx.beans.IDProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @Entity
 public class Car {
@@ -25,16 +22,25 @@ public class Car {
     @Size(min = 2, message = "Year information should have more detail")
     private String year;
 
+    private String headShot;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Catergory catergory;
 
     public Car() {
     }
 
-    public Car(String manufacture, String model, String year) {
+    public Car(@NotBlank @Size(min = 2, message = "Manufacture information should have more detail") String manufacture, @NotBlank @Size(min = 2, message = "Model information should have more detail") String model, @NotBlank @Size(min = 2, message = "Year information should have more detail") String year) {
         this.manufacture = manufacture;
         this.model = model;
         this.year = year;
+    }
+
+    public Car(@NotBlank @Size(min = 2, message = "Manufacture information should have more detail") String manufacture, @NotBlank @Size(min = 2, message = "Model information should have more detail") String model, @NotBlank @Size(min = 2, message = "Year information should have more detail") String year, String headShot) {
+        this.manufacture = manufacture;
+        this.model = model;
+        this.year = year;
+        this.headShot = headShot;
     }
 
     public long getId() {
@@ -76,4 +82,13 @@ public class Car {
     public void setCatergory(Catergory catergory) {
         this.catergory = catergory;
     }
+
+    public String getHeadShot() {
+        return headShot;
+    }
+
+    public void setHeadShot(String headShot) {
+        this.headShot = headShot;
+    }
 }
+

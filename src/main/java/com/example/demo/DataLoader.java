@@ -17,7 +17,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Car car1 = new Car("Honda", "Accord", "2005");
+        Car car1 = new Car("Honda", "Accord", "2005" );
         Car car2 = new Car("Toyota", "Camry", "2016");
 
         Set<Car> carSet3 = new LinkedHashSet<>();

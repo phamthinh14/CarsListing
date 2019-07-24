@@ -86,7 +86,14 @@
         <div class="card-group">
 
             <div class="card" th:each="car:${eachCar.cars}">
-                <!--<img src="..." class="card-img-top" alt="...">-->
+                <!--<th:block th:if="${car.headShot} == null">-->
+                    <!--<p>No picture to display</p>-->
+                <!--</th:block>-->
+                <!--<th:block th:if="${car.headShot} != null">-->
+                    <!--<img th:src="${car.headShot}" class="card-img-top" alt="...">-->
+                <!--</th:block>-->
+
+
                 <div class="card-body">
                     <h5 class="card-title" th:text="${car.model}"
                         th:value="${car.id}"></h5>
@@ -95,6 +102,7 @@
                     <p class="card-text" th:text="${car.year}"
                        th:value="${car.id}"></p>
                     <a th:href="@{/update/{id} (id=${car.id})}">Update</a>
+                    <a th:href="@{/detail/car/{id} (id=${car.id})}">View More</a>
                 </div>
             </div>
         </div>

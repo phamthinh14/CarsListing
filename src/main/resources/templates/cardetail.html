@@ -23,7 +23,7 @@
         <p th:text="${eachCar.year}"
            th:value="${eachCar.id}"></p>
         <!--Delete one car does not work yet-->
-        <!--<a th:href="@{/delete/car/{id} (id=${eachCar.id})}">Delete this car</a>-->
+        <a th:href="@{/delete/car/{id} (id=${eachCar.id})}">Delete this car</a>
     </div>
 </div>
 

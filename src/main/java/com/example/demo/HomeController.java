@@ -7,8 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 @Controller
 public class HomeController {
@@ -93,11 +95,19 @@ public class HomeController {
         return "redirect:/";
     }
 
+    @RequestMapping("/detail/car/{id}")
+    public String showEachCarDetail(@PathVariable("id") long id, Model model) {
+//        model.addAttribute("catergory", catergoryRepository.findById(id).get());
+        model.addAttribute("car", carRepository.findById(id).get());
+        return "eachcardetail";
+    }
+
     @RequestMapping("/delete/car/{id}")
     public String delInvidualCar(@PathVariable("id") long id) {
-        Long myId = catergoryRepository.findById(id).get().getId();
-//        catergoryRepository.findById(id).get().;
-        carRepository.deleteById(myId);
+
+        carRepository.findById(id).get().setCatergory(null);
+//        carRepository.findById(id).get().getId();
+        carRepository.deleteById(id);
         return "redirect:/";
     }
 
